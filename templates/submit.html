@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Song Popularity Predictor | Result</title>
+    <link rel="icon" type="image/x-icon" href="/images/b_br_logo.png" />
+    <!-- <link rel="stylesheet" href="../style.css" /> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.4/font/bootstrap-icons.min.css"
+      integrity="sha512-yU7+yXTc4VUanLSjkZq+buQN3afNA4j2ap/mxvdr440P5aW9np9vIr2JMZ2E5DuYeC9bAoH9CuCR7SJlXAa4pg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+      :root {
+        --color-bg: #1f1f38;
+        --color-bg-variant: #2c2c6c;
+        --color-primary: #4db5ff;
+        --color-primary-variant: rgba(77, 181, 255, 0.4);
+        --color-white: #fff;
+        --color-light: rgba(255, 255, 255, 0.6);
+
+        --container-width-lg: 75%;
+        --container-width-md: 86%;
+        --container-width-sm: 90%;
+
+        --transition: all 400ms ease;
+      }
+      .bg-image {
+        font-family: "Poppins", sans-serif;
+        padding: 5vh 10vw 5vh;
+        color: var(--color-white);
+        background: var(--color-bg);
+        background-image: url("../images/bg-texture.png");
+      }
+      /* =================Section Title Upper================= */
+      .section-title-upper {
+        text-align: center;
+        color: var(--color-light);
+        font-size: 0.8;
+      }
+
+      /* =================Section Title================= */
+      .section-title {
+        text-align: center;
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 2rem;
+        color: var(--color-primary);
+      }
+      nav {
+        line-height: 1;
+        background: rgba(0, 0, 0, 0.3);
+        width: max-content;
+        display: block;
+        padding: 0.7rem 1.7rem;
+        z-index: 2;
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 2rem;
+        display: flex;
+        gap: 0.8rem;
+        border-radius: 3rem;
+        backdrop-filter: blur(15px);
+      }
+
+      nav a {
+        background: transparent;
+        padding: 0.9rem;
+        border-radius: 50%;
+        display: flex;
+        color: var(--color-light);
+        font-size: 1.1rem;
+      }
+
+      nav a:hover {
+        background: rgba(0, 0, 0, 0.3);
+      }
+
+      nav a.active {
+        background: var(--color-primary);
+        color: var(--color-bg);
+      }
+      .op-card {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        border: 3px solid var(--color-bg-variant);
+        border-radius: 0.5rem;
+        padding: 1rem;
+        text-align: center;
+        background:transparent;
+      }
+      .song-name {
+        font-size: 1.5rem;
+      }
+      .pop-name {
+        margin-bottom: 2px;
+      }
+      .pop-out {
+        margin-top: 0px;
+        font-size: 3rem;
+      }
+      .op-prediction {
+        /* text-align: center; */
+        font-size: 1.5rem;
+      }
+      .op-features {
+        font-size: 1.1rem;
+        line-height: 1.5;
+      }
+
+      /* -----------------------Media Queries(SM)----------------------- */
+      @media screen and (max-width: 1024px) {
+        .op-card {
+          flex-direction: column;
+        }
+        .pop-out {
+          margin-top: 0px;
+          font-size: 2.2rem;
+        }
+        @media screen and (max-width: 600px) {
+          .pop-out {
+            margin-top: 0px;
+            font-size: 2rem;
+          }
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-image">
+    <div class="output-section">
+      <div class="section-title-upper">Get To Know</div>
+      <div class="section-title">Result</div>
+      <nav id="navBar">
+        <a href="../index.html" class="navbar_btn active">
+          <i class="bi bi-music-note-list"></i>
+        </a>
+      </nav>
+      <div class="op-card">
+        <div class="op-left">
+          <div class="song-name">{{info['track_name']}}</div>
+          <div class="op-prediction">
+            <p class="pop-name">Popularity</p>
+            <p class="pop-out">{{popularity}}</p>
+          </div>
+          <div class="artist">
+            <div class="song-name">Album: {{info['album_name']}}</div>
+            <div class="song-name">Artist: {{info['artists']}}</div>
+          </div>
+        </div>
+        <div class="op-right">
+          <div class="op-features">
+            <div class="op-feature">
+              Duration in Milli-Seconds :{{features['duration_ms']}}
+            </div>
+            <div class="op-feature">Explicit :{{features['explicit']}}</div>
+            <div class="op-feature">
+              Danceability :{{features['danceability']}}
+            </div>
+            <div class="op-feature">Energy :{{features['energy']}}</div>
+            <div class="op-feature">Key :{{features['key']}}</div>
+            <div class="op-feature">Loudness :{{features['loudness']}}</div>
+            <div class="op-feature">Mode :{{features['mode']}}</div>
+            <div class="op-feature">
+              Speechiness :{{features['speechiness']}}
+            </div>
+            <div class="op-feature">
+              Acousticness :{{features['acousticness']}}
+            </div>
+            <div class="op-feature">
+              Instrumentalness :{{features['instrumentalness']}}
+            </div>
+            <div class="op-feature">Liveness :{{features['liveness']}}</div>
+            <div class="op-feature">Valence :{{features['valence']}}</div>
+            <div class="op-feature">Tempo :{{features['tempo']}}</div>
+            <div class="op-feature">
+              Time Signature :{{features['time_signature']}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Song Popularity Predictor</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/x-icon" href="./images/w_br_logo.png">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.4/font/bootstrap-icons.min.css"
+      integrity="sha512-yU7+yXTc4VUanLSjkZq+buQN3afNA4j2ap/mxvdr440P5aW9np9vIr2JMZ2E5DuYeC9bAoH9CuCR7SJlXAa4pg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body>
+    <nav id="navBar">
+      <a href="#" class="navbar_btn active">
+        <i class="bi bi-house-fill"></i>
+      </a>
+      <a href="#predict" class="navbar_btn">
+        <i class="bi bi-music-note-list"></i>
+      </a>
+      <a href="#about" class="navbar_btn">
+        <i class="bi bi-person-circle"></i>
+      </a>
+      <a href="#contact" class="navbar_btn">
+        <i class="bi bi-envelope-at-fill"></i>
+      </a>
+    </nav>
+
+    <!-- ===============================How It Works=============================== -->
+    <a href="howItWorks.html" class="how-it-works">
+      <i class="bi bi-patch-question-fill"></i>
+    </a>
+
+    <div id="particles-js">
+      <span id="header">
+        <h1 class="title">Song Popularity Predictor</h1>
+        <div class="type-container">
+          <span id="type"></span>
+        </div>
+      </span>
+    </div>
+
+    <div id="predict" class="bg-image predict_section">
+      <div class="section-title-upper">Song Ready?</div>
+      <div class="section-title">Popularity Predictor</div>
+      <div class="predict_form">
+        <form
+          action="submit.html"
+          name="prediction-form"
+          method="POST"
+          id="form"
+          onsubmit="required()"
+          {onsubmit?
+          `alert(onsubmit);`
+          :
+          `alert(onsubmit);`}
+        >
+          <label class="label" for="url">Spotify URL:</label>
+          <div class="form-input-container">
+            <input type="text" id="url" name="url" />
+            <button class="form-clear" id="form-clear" onclick="clearInput()">
+              <i class="bi bi-x-circle"></i>
+            </button>
+          </div>
+          <p for="error" class="error-label-remove" id="error-label">
+            This Field can't be empty!
+          </p>
+          <br />
+          <!-- <input type="submit" value="submit" /> -->
+          <div class="form_button">
+            <button class="button-50" type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="about" class="bg-image about_section">
+      <div class="section-title-upper">Get To Know</div>
+      <div class="section-title">About Us</div>
+      <div class="about_section_container">
+        <div class="about_left_section">
+          <p class="about_left_top about_sec_pad">
+            Song popularity predictor is a machine learning model designed to
+            predict the level of success that a song might achieve in the music
+            industry. This model uses a range of features, such as the song's
+            tempo, genre, lyrics, and the artist's popularity to make
+            predictions.
+          </p>
+          <p class="about_left_top about_sec_pad">
+            The music industry is a highly competitive space, and it can be
+            difficult for artists to break through and achieve widespread
+            success. Song popularity predictor provides a valuable tool for
+            music producers, record labels, and artists themselves, helping them
+            to identify which songs are likely to perform well and make
+            data-driven decisions about their careers.
+          </p>
+        </div>
+        <div class="about_right_section">
+          <img src="./images/w_br_logo.png" alt="" class="about_image" />
+        </div>
+      </div>
+      <div class="">
+        <p class="about_left_bottom about_sec_pad">
+          Whether you're an aspiring artist, a music producer, or a label
+          executive, song popularity predictor is a powerful tool that can help
+          you to make strategic decisions that maximize your chances of success
+          in the music industry.
+        </p>
+      </div>
+    </div>
+
+    <div id="contact" class="footer_section bg-image">
+      <div class="section-title-upper">Suggestion?</div>
+      <div class="section-title">Contact Us</div>
+      <div class="contact_mail">
+        <p class="footer_text">
+          If you have any Problems or Suggestions, we are happy to listen to
+          you!!
+        </p>
+        <div class="contact-mails">
+          <a href="mailto:sidd6758harth@gmail.com">Siddharth Kundu</a>
+          <a href="mailto:koradiyatejas451@gmail.com">Tejas Koradiya</a>
+          <a href="mailto:parthmovaliya55055@gmail.com">Parth Movaliya</a>
+          <a href="mailto:modiarth1711@gmail.com">Arth Modi</a>
+        </div>
+        <div class="copy-rite">
+          <i class="bi bi-c-circle"></i> All Copyright Reserved
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/typed.js@2.0.15/dist/typed.umd.js"></script>
+    <script src="particles.js"></script>
+    <script src="app.js"></script>
+    <script>
+      var typed = new Typed("#type", {
+        strings: ["Predict Popularity of Songs", "Using Spotify API"],
+        typeSpeed: 60,
+        backSpeed: 50,
+        loop: true,
+      });
+
+      particlesJS.load("particles-js", "assets/particles.json", function () {
+        console.log("callback - particles.js config loaded");
+      });
+    </script>
+    <script src="./index.js"></script>
+  </body>
+</html>
